@@ -1,0 +1,9 @@
+Q1: On utilise le port 8080 car c'est le port utilisé pour le protocole http.
+
+Q2: on obtient " <html><body><h1>Welcome to Nyx</h1></body></html> " puis une perte de connexion
+
+Q3: 19
+
+Q4: with: 0.9 sec without: 1s    => ya pas enormement de temps de diff
+
+Q5:
