@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{48CE08C3-C3F7-45C2-B764-5D0CE14B79F6}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>ExecTest</RootNamespace>
-    <AssemblyName>ExecTest</AssemblyName>
+    <ProjectGuid>{AD07C6DB-1D42-4839-848B-0EF1F7BB66BC}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>DisplayName</RootNamespace>
+    <AssemblyName>DisplayName</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,9 +31,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

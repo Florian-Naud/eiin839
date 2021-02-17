@@ -1,0 +1,7 @@
+D:\Utilisateurs\Florian\Desktop\Info\projet\eiin839\TD2\WebDynamic\bin\Debug\WebDynamic.exe.config
+D:\Utilisateurs\Florian\Desktop\Info\projet\eiin839\TD2\WebDynamic\bin\Debug\WebDynamic.exe
+D:\Utilisateurs\Florian\Desktop\Info\projet\eiin839\TD2\WebDynamic\bin\Debug\WebDynamic.pdb
+D:\Utilisateurs\Florian\Desktop\Info\projet\eiin839\TD2\WebDynamic\obj\Debug\WebDynamic.csprojAssemblyReference.cache
+D:\Utilisateurs\Florian\Desktop\Info\projet\eiin839\TD2\WebDynamic\obj\Debug\WebDynamic.csproj.CoreCompileInputs.cache
+D:\Utilisateurs\Florian\Desktop\Info\projet\eiin839\TD2\WebDynamic\obj\Debug\WebDynamic.exe
+D:\Utilisateurs\Florian\Desktop\Info\projet\eiin839\TD2\WebDynamic\obj\Debug\WebDynamic.pdb

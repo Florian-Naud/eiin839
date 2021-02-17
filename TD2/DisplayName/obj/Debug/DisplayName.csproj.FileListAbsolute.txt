@@ -1,0 +1,6 @@
+D:\Utilisateurs\Florian\Desktop\Info\projet\eiin839\TD2\DisplayName\bin\Debug\DisplayName.exe.config
+D:\Utilisateurs\Florian\Desktop\Info\projet\eiin839\TD2\DisplayName\bin\Debug\DisplayName.exe
+D:\Utilisateurs\Florian\Desktop\Info\projet\eiin839\TD2\DisplayName\bin\Debug\DisplayName.pdb
+D:\Utilisateurs\Florian\Desktop\Info\projet\eiin839\TD2\DisplayName\obj\Debug\DisplayName.csproj.CoreCompileInputs.cache
+D:\Utilisateurs\Florian\Desktop\Info\projet\eiin839\TD2\DisplayName\obj\Debug\DisplayName.exe
+D:\Utilisateurs\Florian\Desktop\Info\projet\eiin839\TD2\DisplayName\obj\Debug\DisplayName.pdb

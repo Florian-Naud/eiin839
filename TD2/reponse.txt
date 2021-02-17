@@ -1,0 +1,9 @@
+2. les / permettent d'indiquer le chemin vers le fichier demandé puis on utilise le ? pour indique que l'on passe des paramètres. On donne le nom d'un paramètre puis un = pour indiquer apres sa valeur. On met un & pour séparer les paramètres.
+   On impose ce type d'url car c'est pour standardiser l'utilisation de la methode GET afin qu'il puisse récupérer toutes les informations nécessaires à la demande.
+
+3. A peu pres compris le fonctionnement des exemples 
+   ReflectionSimple permet de montrer que l'on peut lancer une methode en utilisant sont string
+   ExecTest est un simple executable qui permet de lancer du code quand on l'execute
+   ExternalExeCall permet de montrer comment lancer un executable 
+
+4. 
