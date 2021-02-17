@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 using System.Web;
@@ -150,9 +151,30 @@ namespace BasicServerHTTPlistener
     }
     internal class Mymethods
     {
-        public string display_name(string name, string name2)
+        public String display_name(string name, string name2)
         {
             return $"<HTML><BODY> Hello {name} et {name2} </BODY></HTML>";
+        }
+
+        public String externe_display(String param1, String param2)
+        {
+            ProcessStartInfo start = new ProcessStartInfo();
+            start.FileName = @"externe/DisplayName.exe"; // Specify exe name.
+            start.Arguments = $"{param1} {param2}"; // Specify arguments.
+            start.UseShellExecute = false;
+            start.RedirectStandardOutput = true;
+
+            using (Process process = Process.Start(start))
+            {
+                //
+                // Read in all the text from the process with the StreamReader.
+                //
+                using (StreamReader reader = process.StandardOutput)
+                {
+                    string result = reader.ReadToEnd();
+                    return result;
+                }
+            }
         }
     }
 }
