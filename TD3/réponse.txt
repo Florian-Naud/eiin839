@@ -1,0 +1,5 @@
+Q1:	https://api.jcdecaux.com/vls/v1/stations?apiKey=aadb7f161ebe9eb9358509283772daab3be2898b
+Q2:	https://api.jcdecaux.com/vls/v1/stations?contract=marseille&apiKey=aadb7f161ebe9eb9358509283772daab3be2898b
+Q3:	https://api.jcdecaux.com/vls/v1/stations/9087?contract=marseille&apiKey=aadb7f161ebe9eb9358509283772daab3be2898b
+Q4:	pas possible
+Q5:	pas possible
