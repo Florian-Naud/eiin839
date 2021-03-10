@@ -14,14 +14,18 @@ namespace MyFirstREST
         // HttpClient is intended to be instantiated once per application, rather than per-use. See Remarks.
         static readonly HttpClient client = new HttpClient();
 
-        static void Main()
+        static async Task Main()
         {
            
             try
             {
-                String res = getAllContract().Result;
-                //res.ToString()
-                Console.WriteLine(JsonConvert.DeserializeObject(res));
+                Task<String> contrats = await getAllContract();
+                dynamic obj = JsonConvert.DeserializeObject(contrats.Result);
+                Console.WriteLine(obj);
+
+                Task<String> stations = await getAllStationWithContract(obj[0].contract_name);
+                dynamic obj2 = JsonConvert.DeserializeObject(stations.Result);
+                Console.WriteLine(obj2);
             }
             catch (Exception e)
             {
@@ -34,6 +38,11 @@ namespace MyFirstREST
         public static async Task<String> getAllContract()
         {
             return await httpGetRequest("https://api.jcdecaux.com/vls/v1/stations?apiKey=aadb7f161ebe9eb9358509283772daab3be2898b");
+        }
+
+        public static async Task<String> getAllStationWithContract(String contrat)
+        {
+            return await httpGetRequest("https://api.jcdecaux.com/vls/v1/stations?contract="+ contrat +"&apiKey=aadb7f161ebe9eb9358509283772daab3be2898b");
         }
 
         public static async Task<String> httpGetRequest(String request)
