@@ -10,7 +10,7 @@ namespace MyFirstSoap
     {
         static void Main(string[] args)
         {
-            CalculatorService.CalculatorSoapClient calc = new CalculatorService.CalculatorSoapClient();
+            mathOp.MathsOperationsClient calc = new mathOp.MathsOperationsClient();
             int result = calc.Add(2, 3);
             Console.WriteLine(result);
             Console.ReadLine();
