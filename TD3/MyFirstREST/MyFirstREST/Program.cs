@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
-using System.Text.Json;
 using Newtonsoft.Json;
 
 namespace MyFirstREST
@@ -19,17 +18,17 @@ namespace MyFirstREST
            
             try
             {
-                Task<String> contrats = await getAllContract();
+                Task<String> contrats = getAllContract();
                 dynamic obj = JsonConvert.DeserializeObject(contrats.Result);
-                Console.WriteLine(obj);
+                Console.WriteLine(obj); 
 
-                Task<String> stations = await getAllStationWithContract(obj[0].contract_name);
+                Task <String> stations = getAllStationWithContract(obj[0].contract_name.ToString());
                 dynamic obj2 = JsonConvert.DeserializeObject(stations.Result);
                 Console.WriteLine(obj2);
             }
             catch (Exception e)
             {
-                Console.WriteLine("\nRIP petit program!");
+                Console.WriteLine("\nRIP petit program!" + e);
             }
             Console.ReadLine();
             
@@ -42,7 +41,8 @@ namespace MyFirstREST
 
         public static async Task<String> getAllStationWithContract(String contrat)
         {
-            return await httpGetRequest("https://api.jcdecaux.com/vls/v1/stations?contract="+ contrat +"&apiKey=aadb7f161ebe9eb9358509283772daab3be2898b");
+            String url = "https://api.jcdecaux.com/vls/v1/stations?contract=" + contrat + "&apiKey=aadb7f161ebe9eb9358509283772daab3be2898b";
+            return await httpGetRequest(url);
         }
 
         public static async Task<String> httpGetRequest(String request)
