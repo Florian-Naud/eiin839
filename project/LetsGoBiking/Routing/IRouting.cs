@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 
 namespace Routing
@@ -11,7 +12,10 @@ namespace Routing
     public interface IRouting
     {
         [OperationContract]
-        String GetDirection(String depart, string arrive, string laVille);
+        WebResult GetDirectionSOAP(String depart, string arrive, string laVille);
+
+        [OperationContract]
+        Position GetPositionCitySOAP(string laVille);
     }
 
     

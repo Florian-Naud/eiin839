@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Routing
+namespace ProxyWithCache
 {
 
     public class JCDecauxItem
     {
         public int number { get; set; }
-        public String contract_name { get; set; }
+        public String contractName { get; set; }
         public String name { get; set; }
         public String address { get; set; }
         public Position position { get; set; }
@@ -28,8 +28,8 @@ namespace Routing
 
     public class Position
     {
-        public double lat { get; set; }
-        public double lng { get; set; }
+        public double latitude { get; set; }
+        public double longitude { get; set; }
 
         public Position()
         {
@@ -37,13 +37,8 @@ namespace Routing
 
         public Position(double lat, double lng)
         {
-            this.lat = lat;
-            this.lng = lng;
-        }
-
-        public double distance(Position pos)
-        {
-            return Math.Sqrt(Math.Pow(pos.lat - lat, 2) + Math.Pow(pos.lng - lng, 2));
+            this.latitude = lat;
+            this.longitude = lng;
         }
     }
 

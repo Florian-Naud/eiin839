@@ -15,13 +15,31 @@ namespace ProxyWithCache
         ProxyCache<JCDecauxItem> cache;
         public Proxy()
         {
+            
             cache = new ProxyCache<JCDecauxItem>();
+            initCache();
+        }
+
+        private void initCache()
+        {
+            SetCache();
+            var task = Task.Run(async () => {
+                for (; ; )
+                {
+                    await Task.Delay(60000);
+                    SetCache();
+                }
+            });
+        }
+
+        private void SetCache()
+        {
             Task<String> json = Task.Run(() => cache.initialise());
             json.Wait();
             List<JCDecauxItem> items = JsonConvert.DeserializeObject<List<JCDecauxItem>>(json.Result);
             foreach (var o in items)
             {
-                cache.Set(o.name, o);
+                cache.Set(o.name, o, 60);
             }
         }
 
@@ -31,7 +49,7 @@ namespace ProxyWithCache
             List<JCDecauxItem> stationsInCity = new List<JCDecauxItem>();
             foreach(var o in stations)
             {
-                if (o.contract_name.Equals(name))
+                if (o.contractName.Equals(name))
                 {
                     stationsInCity.Add(o);
                 }

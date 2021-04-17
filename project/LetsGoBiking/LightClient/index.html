@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lets Go Biking</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
+</head>
+
+<body>
+
+    <label for="laVille">La ville</label><br>
+    <input type="text" id="laVille" value="marseille"></input><br>
+
+    <label for="depart">Adresse de départ:</label><br>
+    <input type="text" id="depart" value="Boulevard Ledru Rollin"></input><br>
+
+    <label for="arrive">Adresse d'arrivée:</label><br>
+    <input type="text" id="arrive" value="2-10 Rue du Coteau"></input><br><br>
+
+    <button onclick="calculItinerary()">Chercher itinéraire</button><br>
+
+    <div id="result"></div>
+
+    <script type="text/javascript" src="main.js"></script>
+</body>
+
+</html>

@@ -26,7 +26,7 @@ namespace ProxyWithCache
         public async Task<String> initialise()
         {
             HttpClient client = new HttpClient();
-            return await client.GetStringAsync("https://api.jcdecaux.com/vls/v1/stations?apiKey=" + apikey);
+            return await client.GetStringAsync("https://api.jcdecaux.com/vls/v3/stations?apiKey=" + apikey);
         }
 
         public List<T> GetAll()
