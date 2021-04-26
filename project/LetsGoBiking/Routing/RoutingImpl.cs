@@ -14,6 +14,8 @@ namespace Routing
     // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom de classe "Service1" à la fois dans le code et le fichier de configuration.
     public class RoutingImpl : IRouting, IRoutingREST
     {
+        private static Dictionary<JCDecauxItem, int> stationHistorique = new Dictionary<JCDecauxItem, int>();
+
         public WebResult GetDirectionREST(string depart, string arrive, string laVille)
         {
             WebOperationContext.Current.OutgoingResponse.Headers.Add("Access-Control-Allow-Origin", "*");
@@ -36,6 +38,17 @@ namespace Routing
             return GetPositionCity(laVille);
         }
 
+        public Dictionary<JCDecauxItem, int> GetHistoriqueStationsREST()
+        {
+            WebOperationContext.Current.OutgoingResponse.Headers.Add("Access-Control-Allow-Origin", "*");
+            return stationHistorique;
+        }
+
+        public Dictionary<JCDecauxItem, int> GetHistoriqueStationsSOAP()
+        {
+            return stationHistorique;
+        }
+
         public WebResult GetDirection(string depart, string arrive, string laVille)
         {
             //Cherche les coordonnées des adresses
@@ -52,7 +65,7 @@ namespace Routing
             itineraireWithoutBike.addRoute(GetItineraire(departPos, arrivePos, "foot-walking"));
 
             //Recupère toutes les stations de la ville
-            Task<String> json = askInRest("http://localhost:8733/Design_Time_Addresses/Biking/Proxy/GetJCDecauxItemsByCity?name=" + laVille.ToLower());
+            Task<String> json = askInRest("http://localhost:8733/Design_Time_Addresses/Proxy/Service/GetJCDecauxItemsByCity?name=" + laVille.ToLower());
 
             List<JCDecauxItem> stations = JsonConvert.DeserializeObject<List<JCDecauxItem>>(json.Result);
 
@@ -81,10 +94,44 @@ namespace Routing
             itineraireWithBike.addRoute(GetItineraire(arriveStation.position, arrivePos, "foot-walking"));
 
             //Verifie si c'est mieux de passer par l'itinéraire avec ou sans vélo
-            Boolean withoutBikeIsBetter = itineraireWithBike.distance > itineraireWithoutBike.distance;
+            Boolean withoutBikeIsBetter = itineraireWithBike.duration > itineraireWithoutBike.duration;
             if (withoutBikeIsBetter)
             {
                 return new WebResult((int)WebCode.WITHOUTBIKE, itineraireWithoutBike);
+            }
+
+            JCDecauxItem dep = null;
+            JCDecauxItem arr = null;
+            foreach (KeyValuePair<JCDecauxItem, int> o in stationHistorique)
+            {
+                if (o.Key.Equals(departStation)) 
+                {
+                    dep = o.Key;
+                } else if (o.Key.Equals(arriveStation)) 
+                {
+                    arr = o.Key;
+                }
+            }
+
+            if (dep == null)
+            {
+                stationHistorique.Add(departStation, 1);
+            }
+            else 
+            {
+                int nb = stationHistorique[dep];
+                stationHistorique.Remove(dep);
+                stationHistorique.Add(dep, nb + 1);
+            }
+            
+            if (arr == null)
+            {
+                stationHistorique.Add(arriveStation, 1);
+            } else
+            {
+                int nb = stationHistorique[arr];
+                stationHistorique.Remove(arr);
+                stationHistorique.Add(arr, nb + 1);
             }
 
             //Bravo l'itinéraire avec le vélo est mieux!!
@@ -117,7 +164,7 @@ namespace Routing
             if(txt.features.Count == 0)
             {
                 return null;
-            } else if (txt.features[0].properties.layer.Equals("Locality"))
+            } else if (txt.features[0].properties.layer.Value.Equals("locality"))
             {
                 return null;
             }
@@ -166,6 +213,5 @@ namespace Routing
 
             return route;
         }
-        
     }
 }

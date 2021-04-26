@@ -24,6 +24,11 @@ namespace Routing
         public JCDecauxItem()
         {
         }
+
+        public override bool Equals(Object obj)
+        {
+            return ((JCDecauxItem)obj).number.Equals(number);
+        }
     }
 
     public class Position
@@ -66,4 +71,5 @@ namespace Routing
 
         }
     }
+
 }

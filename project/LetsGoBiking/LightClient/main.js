@@ -27,7 +27,7 @@ function calculItinerary() {
     var laVille = document.getElementById("laVille").value;
     var depart = document.getElementById("depart").value;
     var arrive = document.getElementById("arrive").value;
-    var url = "http://localhost:8733/Design_Time_Addresses/Biking/Routing/rest/GetDirectionREST?depart=" + depart + "&arrive=" + arrive + "&laVille=" + laVille;
+    var url = "http://localhost:8733/Design_Time_Addresses/Routing/Service/rest/GetDirectionREST?depart=" + depart + "&arrive=" + arrive + "&laVille=" + laVille;
 
     requestGet(url, manageItinerary);
 }
@@ -52,13 +52,22 @@ function manageItinerary() {
 }
 
 function displayItinerary() {
-    divResult.innerHTML = "Temps: " + itineraire.duration + " s et distance: " + itineraire.distance;
+	var temps = [];
+	temps.push(Math.floor(itineraire.duration /3600));
+	temps.push(Math.floor(itineraire.duration /60) - (temps[0] * 60));
+	divResult.innerHTML = "Temps: ";
+	if(temps[0] > 0) {
+		divResult.innerHTML += temps[0] + " heure ";
+	}
+		divResult.innerHTML += temps [1] + " min ";
+
+    divResult.innerHTML += "et distance: " + itineraire.distance /1000 + " km";
     divResult.classList.add("map");
     createMap();
 }
 
 function createMap() {
-    var url = "http://localhost:8733/Design_Time_Addresses/Biking/Routing/rest/GetPositionCityREST?laVille=" + document.getElementById("laVille").value;
+    var url = "http://localhost:8733/Design_Time_Addresses/Routing/Service/rest/GetPositionCityREST?laVille=" + document.getElementById("laVille").value;
     requestGet(url, createMap_callback);
 }
 

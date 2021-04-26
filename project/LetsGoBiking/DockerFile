@@ -1,0 +1,11 @@
+FROM microsoft/windowsservercore
+
+RUN powershell -Command Add-WindowsFeature NET-WCF-HTTP-Activation45
+
+WORKDIR app
+
+EXPOSE 83
+
+COPY Bin/ .
+
+ENTRYPOINT BasicHttpHost.exe

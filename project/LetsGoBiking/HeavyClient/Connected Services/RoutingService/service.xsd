@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/Routing" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="GetDirectionSOAP">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="depart" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="arrive" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="laVille" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDirectionSOAPResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Routing" minOccurs="0" name="GetDirectionSOAPResult" nillable="true" type="q1:WebResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPositionCitySOAP">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="laVille" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPositionCitySOAPResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Routing" minOccurs="0" name="GetPositionCitySOAPResult" nillable="true" type="q2:Position" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHistoriqueStationsSOAP">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHistoriqueStationsSOAPResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetHistoriqueStationsSOAPResult" nillable="true" type="q3:ArrayOfKeyValueOfJCDecauxItemintHLsJteJy" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDirectionREST">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="depart" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="arrive" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="laVille" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDirectionRESTResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Routing" minOccurs="0" name="GetDirectionRESTResult" nillable="true" type="q4:WebResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPositionCityREST">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="laVille" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPositionCityRESTResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Routing" minOccurs="0" name="GetPositionCityRESTResult" nillable="true" type="q5:Position" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHistoriqueStationsREST">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHistoriqueStationsRESTResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetHistoriqueStationsRESTResult" nillable="true" type="q6:ArrayOfKeyValueOfJCDecauxItemintHLsJteJy" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

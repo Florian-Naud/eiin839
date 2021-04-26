@@ -16,6 +16,9 @@ namespace Routing
 
         [OperationContract]
         Position GetPositionCitySOAP(string laVille);
+
+        [OperationContract]
+        Dictionary<JCDecauxItem, int> GetHistoriqueStationsSOAP();
     }
 
     

@@ -19,6 +19,10 @@ namespace Routing
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         Position GetPositionCityREST(string laVille);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        Dictionary<JCDecauxItem, int> GetHistoriqueStationsREST();
     }
 
     
